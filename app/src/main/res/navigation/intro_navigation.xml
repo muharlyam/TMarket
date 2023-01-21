@@ -1,0 +1,24 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_page_navigation"
+    app:startDestination="@id/fragment_recommendation">
+
+    <fragment
+        android:id="@+id/fragment_recommendation"
+        android:name="com.muharlyam.tmarket.ui.RecommendationFragment"
+        android:label="fragment_recommendation"
+        tools:layout="@layout/fragment_recommendation" >
+        <action
+            android:id="@+id/action_activity_main_to_product_fragment"
+            app:destination="@id/product_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_fragment"
+        android:name="com.muharlyam.tmarket.ui.ProductFragment"
+        android:label="product_fragment"
+        tools:layout="@layout/fragment_product" >
+    </fragment>
+
+</navigation>
