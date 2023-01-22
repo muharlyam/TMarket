@@ -1,9 +1,7 @@
 package com.muharlyam.tmarket.adapter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
@@ -41,7 +39,7 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
         return productDtoList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ProductRecommendationItemBinding binding;
 
         ViewHolder(ProductRecommendationItemBinding binding) {
@@ -52,14 +50,16 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
         public void bind(ProductDto productDto) {
             binding.setProduct(productDto);
             binding.executePendingBindings();
-        }
-
-        @Override
-        public void onClick(View view) {
-            Bundle bundle = new Bundle();
-            bundle.putString("test", "test");
-            Navigation.findNavController(new Activity(), R.id.nav_host_fragment)
-                    .navigate(R.id.action_fragment_recommendation_to_product_fragment, bundle);
+            binding.getRoot().setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("name", productDto.getName());
+                bundle.putString("description", productDto.getDescription());
+                bundle.putString("imageUrl", productDto.getImageUrl());
+                bundle.putDouble("price", productDto.getPrice());
+                bundle.putDouble("rank", productDto.getRank());
+                Navigation.findNavController(this.binding.getRoot())
+                        .navigate(R.id.action_fragment_recommendation_to_product_fragment, bundle);
+            });
         }
     }
 }
