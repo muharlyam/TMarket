@@ -3,6 +3,11 @@ plugins {
 }
 
 android {
+
+    dataBinding {
+        enabled = true
+    }
+
     namespace 'com.muharlyam.tmarket'
     compileSdk 32
 

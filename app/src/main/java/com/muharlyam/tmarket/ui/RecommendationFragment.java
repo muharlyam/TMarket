@@ -19,7 +19,6 @@ import com.muharlyam.tmarket.viewmodel.RecommendationViewModel;
 public class RecommendationFragment extends Fragment {
 
     RecommendationViewModel recommendationViewModel;
-    NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,17 +31,18 @@ public class RecommendationFragment extends Fragment {
 
     private void getDataFromApi(View view) {
         recommendationViewModel = new ViewModelProvider(this).get(RecommendationViewModel.class);
-        recommendationViewModel.getRecommendation().observe(getViewLifecycleOwner(), recommendationDto -> {
-            RecyclerView recyclerView = view.findViewById(R.id.rec_like_prod_list);
-            ProductRecommendationAdapter productRecommendationAdapter =
-                    new ProductRecommendationAdapter(view.getContext(), recommendationDto.getLikeProducts(), navController);
-            recyclerView.setAdapter(productRecommendationAdapter);
+        recommendationViewModel.getRecommendation()
+                .observe(getViewLifecycleOwner(), recommendationDto -> {
+                    RecyclerView recyclerView = view.findViewById(R.id.rec_like_prod_list);
+                    ProductRecommendationAdapter productRecommendationAdapter =
+                            new ProductRecommendationAdapter(view.getContext(), recommendationDto.getLikeProducts());
+                    recyclerView.setAdapter(productRecommendationAdapter);
 
-            recyclerView = view.findViewById(R.id.rec_top_prod_txt_list);
-            productRecommendationAdapter =
-                    new ProductRecommendationAdapter(view.getContext(), recommendationDto.getTopProducts(), navController);
-            recyclerView.setAdapter(productRecommendationAdapter);
-        });
+                    recyclerView = view.findViewById(R.id.rec_top_prod_txt_list);
+                    productRecommendationAdapter =
+                            new ProductRecommendationAdapter(view.getContext(), recommendationDto.getTopProducts());
+                    recyclerView.setAdapter(productRecommendationAdapter);
+                });
 
     }
 }

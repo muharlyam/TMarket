@@ -5,15 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.muharlyam.tmarket.R;
+import com.muharlyam.tmarket.databinding.FragmentProductBinding;
+import com.muharlyam.tmarket.dto.ProductDto;
 
 public class ProductFragment extends Fragment {
-
-    NavController navController;
 
     public ProductFragment(){
         super(R.layout.fragment_product);
@@ -22,7 +24,11 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_product, container, false);
-        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+        ProductDto productDto = new ProductDto();
+
+        FragmentProductBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_product, container, false);
+        binding.setProduct(productDto);
         return rootView;
     }
 }

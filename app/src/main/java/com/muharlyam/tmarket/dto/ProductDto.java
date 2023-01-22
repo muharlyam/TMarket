@@ -13,6 +13,8 @@ public class ProductDto {
     private Long productTypeId;
     private Double rank;
 
+    public ProductDto(){}
+
     public ProductDto(Long id,
                       String name,
                       String description,
