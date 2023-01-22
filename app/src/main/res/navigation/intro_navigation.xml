@@ -10,7 +10,7 @@
         android:label="fragment_recommendation"
         tools:layout="@layout/fragment_recommendation" >
         <action
-            android:id="@+id/action_activity_main_to_product_fragment"
+            android:id="@+id/action_fragment_recommendation_to_product_fragment"
             app:destination="@id/product_fragment" />
     </fragment>
 

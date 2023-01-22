@@ -1,5 +1,6 @@
 package com.muharlyam.tmarket.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,46 +10,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.NavController;
+import androidx.databinding.DataBindingUtil;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.muharlyam.tmarket.R;
+import com.muharlyam.tmarket.databinding.FragmentProductBinding;
+import com.muharlyam.tmarket.databinding.ProductRecommendationItemBinding;
 import com.muharlyam.tmarket.dto.ProductDto;
 
 import java.util.List;
 
 public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRecommendationAdapter.ViewHolder> {
 
-    private final LayoutInflater inflater;
     private final List<ProductDto> productDtoList;
     private final Context context;
-    private final NavController navController;
 
-    public ProductRecommendationAdapter(Context context, List<ProductDto> productDtoList, NavController navController) {
+    public ProductRecommendationAdapter(Context context, List<ProductDto> productDtoList) {
         this.productDtoList = productDtoList;
-        this.inflater = LayoutInflater.from(context);
         this.context = context;
-        this.navController = navController;
     }
 
     @Override
     public ProductRecommendationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.product_recommendation_item, parent, false);
-        return new ViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        ProductRecommendationItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.product_recommendation_item, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ProductRecommendationAdapter.ViewHolder holder, int position) {
         ProductDto productDto = productDtoList.get(position);
-        holder.nameView.setText(productDto.getName());
-        holder.descriptionView.setText(productDto.getDescription());
+        holder.bind(productDtoList.get(position));
 
-        Glide.with(context)
-                .load(productDtoList.get(position).getImageUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imageView);
     }
 
     @Override
@@ -57,25 +53,24 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        final ConstraintLayout item;
-        final TextView nameView, descriptionView;
-        final ImageView imageView;
+        ProductRecommendationItemBinding binding;
 
-        ViewHolder(View view) {
-            super(view);
-            item = view.findViewById(R.id.product_id_cl);
-            nameView = view.findViewById(R.id.name);
-            descriptionView = view.findViewById(R.id.description);
-            imageView = view.findViewById(R.id.image);
+        ViewHolder(ProductRecommendationItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
 
-            item.setOnClickListener(this);
+        public void bind(ProductDto productDto) {
+            binding.setProduct(productDto);
+            binding.executePendingBindings();
         }
 
         @Override
         public void onClick(View view) {
             Bundle bundle = new Bundle();
             bundle.putString("1", "11");
-            navController.navigate(R.id.action_activity_main_to_product_fragment, bundle);
+            Navigation.findNavController(new Activity(), R.id.nav_host_fragment)
+                    .navigate(R.id.action_fragment_recommendation_to_product_fragment);
         }
     }
 }
