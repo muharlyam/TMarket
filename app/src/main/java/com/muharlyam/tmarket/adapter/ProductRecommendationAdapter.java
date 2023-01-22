@@ -1,23 +1,16 @@
 package com.muharlyam.tmarket.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.muharlyam.tmarket.R;
-import com.muharlyam.tmarket.databinding.FragmentProductBinding;
 import com.muharlyam.tmarket.databinding.ProductRecommendationItemBinding;
 import com.muharlyam.tmarket.dto.ProductDto;
 
@@ -26,11 +19,9 @@ import java.util.List;
 public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRecommendationAdapter.ViewHolder> {
 
     private final List<ProductDto> productDtoList;
-    private final Context context;
 
-    public ProductRecommendationAdapter(Context context, List<ProductDto> productDtoList) {
+    public ProductRecommendationAdapter(List<ProductDto> productDtoList) {
         this.productDtoList = productDtoList;
-        this.context = context;
     }
 
     @Override
@@ -42,9 +33,7 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
 
     @Override
     public void onBindViewHolder(ProductRecommendationAdapter.ViewHolder holder, int position) {
-        ProductDto productDto = productDtoList.get(position);
         holder.bind(productDtoList.get(position));
-
     }
 
     @Override
@@ -68,9 +57,9 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
         @Override
         public void onClick(View view) {
             Bundle bundle = new Bundle();
-            bundle.putString("1", "11");
+            bundle.putString("test", "test");
             Navigation.findNavController(new Activity(), R.id.nav_host_fragment)
-                    .navigate(R.id.action_fragment_recommendation_to_product_fragment);
+                    .navigate(R.id.action_fragment_recommendation_to_product_fragment, bundle);
         }
     }
 }

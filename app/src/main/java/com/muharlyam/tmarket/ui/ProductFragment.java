@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.muharlyam.tmarket.R;
 import com.muharlyam.tmarket.databinding.FragmentProductBinding;
