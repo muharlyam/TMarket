@@ -1,5 +1,11 @@
 package com.muharlyam.tmarket.ui;
 
+import static com.muharlyam.tmarket.utils.Constants.DESCRIPTION;
+import static com.muharlyam.tmarket.utils.Constants.IMAGE_URL;
+import static com.muharlyam.tmarket.utils.Constants.NAME;
+import static com.muharlyam.tmarket.utils.Constants.PRICE;
+import static com.muharlyam.tmarket.utils.Constants.RANK;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +39,11 @@ public class ProductFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ProductDto productDto = new ProductDto();
-        productDto.setName(getArguments().getString("name"));
-        productDto.setDescription(getArguments().getString("description"));
-        productDto.setImageUrl(getArguments().getString("imageUrl"));
-        productDto.setPrice(getArguments().getDouble("price"));
-        productDto.setRank(getArguments().getDouble("rank"));
+        productDto.setName(getArguments().getString(NAME));
+        productDto.setDescription(getArguments().getString(DESCRIPTION));
+        productDto.setImageUrl(getArguments().getString(IMAGE_URL));
+        productDto.setPrice(getArguments().getDouble(PRICE));
+        productDto.setRank(getArguments().getDouble(RANK));
 
         binding.setProduct(productDto);
     }

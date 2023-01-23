@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.muharlyam.tmarket.R;
-import com.muharlyam.tmarket.adapter.ProductRecommendationAdapter;
+import com.muharlyam.tmarket.adapter.ProductAdapter;
 import com.muharlyam.tmarket.viewmodel.RecommendationViewModel;
 
 public class RecommendationFragment extends Fragment {
@@ -31,14 +31,14 @@ public class RecommendationFragment extends Fragment {
         recommendationViewModel.getRecommendation()
                 .observe(getViewLifecycleOwner(), recommendationDto -> {
                     RecyclerView recyclerView = view.findViewById(R.id.rec_like_prod_list);
-                    ProductRecommendationAdapter productRecommendationAdapter =
-                            new ProductRecommendationAdapter(recommendationDto.getLikeProducts());
-                    recyclerView.setAdapter(productRecommendationAdapter);
+                    ProductAdapter productAdapter =
+                            new ProductAdapter(recommendationDto.getLikeProducts());
+                    recyclerView.setAdapter(productAdapter);
 
                     recyclerView = view.findViewById(R.id.rec_top_prod_txt_list);
-                    productRecommendationAdapter =
-                            new ProductRecommendationAdapter(recommendationDto.getTopProducts());
-                    recyclerView.setAdapter(productRecommendationAdapter);
+                    productAdapter =
+                            new ProductAdapter(recommendationDto.getTopProducts());
+                    recyclerView.setAdapter(productAdapter);
                 });
 
     }

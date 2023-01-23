@@ -1,5 +1,11 @@
 package com.muharlyam.tmarket.adapter;
 
+import static com.muharlyam.tmarket.utils.Constants.DESCRIPTION;
+import static com.muharlyam.tmarket.utils.Constants.IMAGE_URL;
+import static com.muharlyam.tmarket.utils.Constants.NAME;
+import static com.muharlyam.tmarket.utils.Constants.PRICE;
+import static com.muharlyam.tmarket.utils.Constants.RANK;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,28 +15,28 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.muharlyam.tmarket.R;
-import com.muharlyam.tmarket.databinding.ProductRecommendationItemBinding;
+import com.muharlyam.tmarket.databinding.ItemProductBinding;
 import com.muharlyam.tmarket.dto.ProductDto;
 
 import java.util.List;
 
-public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRecommendationAdapter.ViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private final List<ProductDto> productDtoList;
 
-    public ProductRecommendationAdapter(List<ProductDto> productDtoList) {
+    public ProductAdapter(List<ProductDto> productDtoList) {
         this.productDtoList = productDtoList;
     }
 
     @Override
-    public ProductRecommendationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProductAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ProductRecommendationItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.product_recommendation_item, parent, false);
+        ItemProductBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_product, parent, false);
         return new ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(ProductRecommendationAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ProductAdapter.ViewHolder holder, int position) {
         holder.bind(productDtoList.get(position));
     }
 
@@ -40,9 +46,9 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ProductRecommendationItemBinding binding;
+        ItemProductBinding binding;
 
-        ViewHolder(ProductRecommendationItemBinding binding) {
+        ViewHolder(ItemProductBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -52,11 +58,11 @@ public class ProductRecommendationAdapter extends RecyclerView.Adapter<ProductRe
             binding.executePendingBindings();
             binding.getRoot().setOnClickListener(v -> {
                 Bundle bundle = new Bundle();
-                bundle.putString("name", productDto.getName());
-                bundle.putString("description", productDto.getDescription());
-                bundle.putString("imageUrl", productDto.getImageUrl());
-                bundle.putDouble("price", productDto.getPrice());
-                bundle.putDouble("rank", productDto.getRank());
+                bundle.putString(NAME, productDto.getName());
+                bundle.putString(DESCRIPTION, productDto.getDescription());
+                bundle.putString(IMAGE_URL, productDto.getImageUrl());
+                bundle.putDouble(PRICE, productDto.getPrice());
+                bundle.putDouble(RANK, productDto.getRank());
                 Navigation.findNavController(this.binding.getRoot())
                         .navigate(R.id.action_fragment_recommendation_to_product_fragment, bundle);
             });
