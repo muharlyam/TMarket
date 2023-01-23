@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fragment_recommendation_to_product_fragment"
             app:destination="@id/product_fragment" />
+        <action
+            android:id="@+id/action_fragment_recommendation_to_store_fragment"
+            app:destination="@id/store_fragment" />
     </fragment>
 
     <fragment
@@ -19,6 +22,13 @@
         android:name="com.muharlyam.tmarket.ui.ProductFragment"
         android:label="product_fragment"
         tools:layout="@layout/fragment_product" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/store_fragment"
+        android:name="com.muharlyam.tmarket.ui.StoreFragment"
+        android:label="store_fragment"
+        tools:layout="@layout/fragment_store" >
     </fragment>
 
 </navigation>

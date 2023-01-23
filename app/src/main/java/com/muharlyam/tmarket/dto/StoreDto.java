@@ -10,6 +10,8 @@ public class StoreDto {
     private Long storeTypeId;
     private Double rank;
 
+    public StoreDto(){}
+
     public StoreDto(Long id,
                     String name,
                     String description,
