@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_fragment_recommendation_to_store_fragment"
             app:destination="@id/store_fragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_signUpFragment"
+            app:destination="@id/sign_up_fragment" />
     </fragment>
 
     <fragment
@@ -30,5 +33,11 @@
         android:label="store_fragment"
         tools:layout="@layout/fragment_store" >
     </fragment>
+
+    <fragment
+        android:id="@+id/sign_up_fragment"
+        android:name="com.muharlyam.tmarket.ui.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
 
 </navigation>

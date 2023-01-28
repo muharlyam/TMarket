@@ -3,7 +3,6 @@ package com.muharlyam.tmarket.ui;
 import static com.muharlyam.tmarket.utils.Constants.DESCRIPTION;
 import static com.muharlyam.tmarket.utils.Constants.IMAGE_URL;
 import static com.muharlyam.tmarket.utils.Constants.NAME;
-import static com.muharlyam.tmarket.utils.Constants.PRICE;
 import static com.muharlyam.tmarket.utils.Constants.RANK;
 
 import android.os.Bundle;
@@ -16,11 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.muharlyam.domain.dto.StoreDto;
 import com.muharlyam.tmarket.R;
 import com.muharlyam.tmarket.databinding.FragmentStoreBinding;
-import com.muharlyam.tmarket.dto.ProductDto;
-import com.muharlyam.tmarket.dto.StoreDto;
-
 public class StoreFragment extends Fragment {
 
     FragmentStoreBinding binding;

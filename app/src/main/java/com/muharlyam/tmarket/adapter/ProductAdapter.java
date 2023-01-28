@@ -14,9 +14,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.muharlyam.domain.dto.ProductDto;
 import com.muharlyam.tmarket.R;
 import com.muharlyam.tmarket.databinding.ItemProductBinding;
-import com.muharlyam.tmarket.dto.ProductDto;
 
 import java.util.List;
 
