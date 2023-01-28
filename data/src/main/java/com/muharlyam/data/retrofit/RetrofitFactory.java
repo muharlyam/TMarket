@@ -1,4 +1,4 @@
-package com.muharlyam.tmarket.retrofit;
+package com.muharlyam.data.retrofit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

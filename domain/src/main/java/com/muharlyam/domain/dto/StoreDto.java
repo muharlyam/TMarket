@@ -1,4 +1,4 @@
-package com.muharlyam.tmarket.dto;
+package com.muharlyam.domain.dto;
 
 public class StoreDto {
     private Long id;

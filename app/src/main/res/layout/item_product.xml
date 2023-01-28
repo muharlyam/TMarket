@@ -7,7 +7,7 @@
 
         <variable
             name="product"
-            type="com.muharlyam.tmarket.dto.ProductDto" />
+            type="com.muharlyam.domain.dto.ProductDto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

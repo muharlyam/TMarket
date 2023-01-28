@@ -1,4 +1,4 @@
-package com.muharlyam.tmarket.dto;
+package com.muharlyam.domain.dto;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ public class RecommendationDto {
     private List<ProductDto> likeProducts;
     private List<StoreDto> topStores;
     private List<ProductDto> topProducts;
+
+    public RecommendationDto(){}
 
     public RecommendationDto(String profileId,
                              List<StoreDto> likeStores,

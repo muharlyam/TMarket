@@ -16,9 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.muharlyam.domain.dto.ProductDto;
 import com.muharlyam.tmarket.R;
 import com.muharlyam.tmarket.databinding.FragmentProductBinding;
-import com.muharlyam.tmarket.dto.ProductDto;
 
 public class ProductFragment extends Fragment {
 
