@@ -11,7 +11,7 @@ public class RetrofitFactory {
 
     private RetrofitFactory () {}
 
-    public static RecommendationApi getInterface() {
+    public static Retrofit getInstance() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder client = new OkHttpClient.Builder()
@@ -23,6 +23,6 @@ public class RetrofitFactory {
                     .client(client.build())
                     .build();
         }
-        return retrofit.create(RecommendationApi.class);
+        return retrofit;
     }
 }

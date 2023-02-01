@@ -14,11 +14,11 @@ import retrofit2.Response;
 
 public class RecommendationRepositoryImpl implements RecommendationRepository {
 
-    private static RecommendationApi recommendationApi;
+    private final RecommendationApi recommendationApi; // todo was static
 
 
     public RecommendationRepositoryImpl() {
-        recommendationApi = RetrofitFactory.getInterface();
+        recommendationApi = RetrofitFactory.getInstance().create(RecommendationApi.class);;
     }
 
     public RecommendationDto getRecommendation() {
