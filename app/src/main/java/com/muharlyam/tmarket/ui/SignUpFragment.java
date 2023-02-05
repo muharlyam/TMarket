@@ -29,7 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.muharlyam.data.repository.ProfileRepositoryImpl;
 import com.muharlyam.domain.dto.profile.TokenDto;
 import com.muharlyam.domain.repository.ProfileRepository;
-import com.muharlyam.domain.service.ProfileService;
+import com.muharlyam.data.service.ProfileService;
 import com.muharlyam.tmarket.R;
 
 import java.util.concurrent.Executors;
@@ -45,6 +45,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private final static int GOOGLE_SIGN_IN_REQUEST_CODE = 1;
 
+    @Inject
     public ProfileRepository profileRepository;
     ProfileService profileService;
 
@@ -55,7 +56,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), options);
-        profileRepository = new ProfileRepositoryImpl();
         firebaseAuth = FirebaseAuth.getInstance();
         profileService = new ProfileService(profileRepository);
     }
